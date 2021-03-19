@@ -1,10 +1,8 @@
-const db = require('../db')
-
-const create = async(data) => {
-    const dbConn = await db.init('./db.sqlite3')
-    console.log(data)
-    await db.queryWithParams(dbConn, "INSERT INTO users (name, email) VALUES (?, ?);", data)
-}
+const NeDB = require('nedb')
+const db = new NeDB({
+    filename: 'users.db',
+    autoload: true
+})
 
 module.exports = app => {
     app.get('/users', (req, res) => {
@@ -21,15 +19,16 @@ module.exports = app => {
     
     app.post('/users', async(req, res) => {
         
-        // res.json(req.body)
-        await create(req.body)
-            .catch(err => {
-                console.log('Error:',err)
-                res.json({
-                    status: 400,
+        db.insert(req.body, (err, user) => {
+            if(err){
+                console.log('Error:',err);
+                res.status(400).json({
                     error: err
                 })
-            })
+            } else {
+                res.status(200).json(user)
+            }
+        })
 
     })
 }
