@@ -5,4 +5,14 @@ const send = (err, req, res, code = 400) => {
     })
 }
 
-module.exports = { send }
+const validation = (err, req, res, code = 400) => {
+    console.log(`error: ${err.array()}`)
+    res.status(code).json({
+        error: err.array()
+    })
+}
+
+module.exports = { 
+    send,
+    validation
+}
