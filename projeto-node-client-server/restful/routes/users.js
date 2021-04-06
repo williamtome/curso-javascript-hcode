@@ -23,8 +23,8 @@ module.exports = app => {
     })
     
     route.post(
-        body('name', 'O nome é obrigatório.').not().isEmpty(),
-        body('email', 'O e-mail está inválido.').not().isEmail(),
+        body('_name', 'O nome é obrigatório.').not().isEmpty(),
+        body('_email', 'O e-mail está inválido.').not().isEmail(),
         (req, res) => {
 
         const errors = validationResult(req)
@@ -53,8 +53,8 @@ module.exports = app => {
     })
 
     routeId.put(
-        body('name', 'O nome é obrigatório.').not().isEmpty(),
-        body('email', 'O e-mail está inválido.').not().isEmail(),
+        body('_name', 'O nome é obrigatório.').not().isEmpty(),
+        body('_email', 'O e-mail está inválido.').not().isEmail(),
         (req, res) => {
 
         const errors = validationResult(req)
