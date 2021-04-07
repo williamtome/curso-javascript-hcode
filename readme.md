@@ -7,6 +7,7 @@ Neste repositório foram construídos alguns projetos usando JavaScript puro (Va
 * Calculadora;
 * Validação de formulário de um painel de gerenciamento de usuários;
 * RestAPI - CRUD de usuários com Node.js usando Express;
+* Gerenciamento de usuários acessando RestAPI com Restify;
 
 # Autor
 **William Weirich Tomé**
